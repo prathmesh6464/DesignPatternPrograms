@@ -5,11 +5,14 @@ class LazyInitializedSingleton
 {
     private static LazyInitializedSingleton instance;
     
+    
     private LazyInitializedSingleton()
     {
-    	System.out.println("Constructore");
+    	System.out.println("Constructor");
     }
-        
+    
+    
+    //LATE INITIALIZATION OF OBJECT
     public static LazyInitializedSingleton getInstance()
     {
         if(instance == null){
