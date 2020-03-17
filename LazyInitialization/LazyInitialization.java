@@ -5,13 +5,6 @@ class LazyInitializedSingleton
 {
     private static LazyInitializedSingleton instance;
     
-<<<<<<< HEAD
-    private LazyInitializedSingleton()
-    {
-    	
-    }
-        
-=======
     
     private LazyInitializedSingleton()
     {
@@ -20,7 +13,6 @@ class LazyInitializedSingleton
     
     
     //LATE INITIALIZATION OF OBJECT
->>>>>>> 3.LazyInitialization
     public static LazyInitializedSingleton getInstance()
     {
         if(instance == null){
