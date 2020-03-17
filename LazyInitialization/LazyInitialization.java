@@ -1,12 +1,17 @@
 package LazyInitialization;
 
-public class LazyInitializedSingleton
+
+class LazyInitializedSingleton
 {
     private static LazyInitializedSingleton instance;
     
-    private LazyInitializedSingleton(){}
-    
-    public static LazyInitializedSingleton getInstance(){
+    private LazyInitializedSingleton()
+    {
+    	
+    }
+        
+    public static LazyInitializedSingleton getInstance()
+    {
         if(instance == null){
             instance = new LazyInitializedSingleton();
         }
@@ -15,13 +20,12 @@ public class LazyInitializedSingleton
 }
 
 
-
 //CLASS LAZY INITIALIZATION
-class StaticBlockSingletonType
+public class LazyInitialization
 {
 	//MAIN METHOD
 	public static void main(String[] args)
 	{
-		StaticBlockSingleton StaticBlockSingletonObject = StaticBlockSingleton.getInstance();
+		LazyInitializedSingleton LazySingletonObject = LazyInitializedSingleton.getInstance();
 	}
 }
