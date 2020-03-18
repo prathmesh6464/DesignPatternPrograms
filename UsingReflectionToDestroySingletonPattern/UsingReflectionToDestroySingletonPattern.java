@@ -39,7 +39,7 @@ public class UsingReflectionToDestroySingletonPattern
 			Constructor[] constructors = EagerIntialization.class.getDeclaredConstructors();
 			for (Constructor constructor : constructors) 
 			{
-				//Below code will destroy the singleton pattern
+				//BELOW CODE WILL DESTROY THE SINGLETON PATTERN
 				constructor.setAccessible(true);
 				instanceTwo = (EagerIntialization) constructor.newInstance();
 				break;
@@ -50,6 +50,7 @@ public class UsingReflectionToDestroySingletonPattern
 			e.printStackTrace();
 		}
 
+		
 		System.out.println(instanceOne.objectCount);
 		System.out.println(instanceTwo.objectCount);
 	}
