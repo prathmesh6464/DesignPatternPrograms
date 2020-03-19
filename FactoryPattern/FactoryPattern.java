@@ -72,10 +72,10 @@ class ComputerFactory
 	{
 		switch(computerType)
 		{
-			case "Pc"	:	return new Pc();
-			case "Laptop"	:	return new Laptop();
+			case "Pc"		:	return new Pc();
+			case "Laptop"		:	return new Laptop();
 			case "ServerComputer"	:	return new ServerComputer();
-			default	:	System.out.println("Please give valid input");
+			default			:	System.out.println("Please give valid input");
 		}
 		return null;
 	}
