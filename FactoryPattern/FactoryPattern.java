@@ -18,8 +18,8 @@ class Pc implements Computer
 	{
 		System.out.println("Pc object created");
 	}
-	
-	
+
+
 	@Override
 	public void showComputerType()
 	{
@@ -36,8 +36,8 @@ class Laptop implements Computer
 	{
 		System.out.println("Laptop object created");
 	}
-	
-	
+
+
 	@Override
 	public void showComputerType()
 	{
@@ -54,8 +54,8 @@ class ServerComputer implements Computer
 	{
 		System.out.println("ServerComputer object created");
 	}
-	
-	
+
+
 	@Override
 	public void showComputerType()
 	{
