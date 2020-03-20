@@ -29,7 +29,8 @@ class Employee implements Cloneable
 
 	
 	//SETTER METHOD
-	public void setEmployeeList(String empList) {
+	public void setEmployeeList(String empList)
+	{
 		this.empList.add(empList);
 	}
 	
