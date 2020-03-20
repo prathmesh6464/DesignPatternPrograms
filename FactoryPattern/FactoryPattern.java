@@ -92,6 +92,7 @@ public class FactoryPattern
 		System.out.println("Enter input for computer type (Laptop,Pc and ServerComputer)");
 		Scanner scannerObject = new Scanner(System.in);		
 		ComputerFactory computerFactoryObject = new ComputerFactory();
-		computerFactoryObject.getInstanceOfComputer(scannerObject.next());	
+		Computer computerFactoryReturnedObject = computerFactoryObject.getInstanceOfComputer(scannerObject.next());
+		computerFactoryReturnedObject.showComputerType(); 
 	}
 }
