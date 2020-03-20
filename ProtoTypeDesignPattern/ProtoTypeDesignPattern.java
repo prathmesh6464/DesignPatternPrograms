@@ -53,7 +53,7 @@ class Employee implements Cloneable
 //CLASS PROTO TYPE DESIGN PATTERN
 public class ProtoTypeDesignPattern
 {
-	//MAIN CLASS
+	//MAIN METHOD
 	public static void main(String args[]) throws CloneNotSupportedException
 	{
 		//FIRST OBJECT CREATED
