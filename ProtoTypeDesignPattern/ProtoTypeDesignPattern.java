@@ -10,6 +10,17 @@ class Employee implements Cloneable
 	private List<String> empList = new ArrayList<String>();
 
 	
+	//PARAMETERISED CONSTRUCTOR
+	public Employee(List<String> temparoryCloneObject)
+	{
+		this.empList = temparoryCloneObject;
+	}
+
+
+	//DEFAULT CONSTRUCTOR
+	public Employee(){}
+
+
 	//GETTER METHOD
 	public Object getEmployeeList() 
 	{
@@ -25,14 +36,16 @@ class Employee implements Cloneable
 	
 	//OVERRIDING METHOD OF OBJECT CLASS
 	@Override
-	public Object clone() throws CloneNotSupportedException
+	public Employee clone() throws CloneNotSupportedException
 	{
 		List<String> temparoryCloneObject = new ArrayList<String>();
 		for (String employeeName : (ArrayList<String>)this.getEmployeeList()) 
 		{
 			temparoryCloneObject.add(employeeName);
-		}
-		return temparoryCloneObject;
+		}		
+		//ONE EXTRA NAME ADDED FOR CHEKING
+		temparoryCloneObject.add("Amir Khan");
+		return new Employee(temparoryCloneObject);
 	}
 }
 
@@ -47,16 +60,20 @@ public class ProtoTypeDesignPattern
 		Employee employeeObject = new Employee();
 		employeeObject.setEmployeeList("prathamesh");
 		employeeObject.setEmployeeList("pratham");
-		employeeObject.setEmployeeList("pratik");
-		Object emp = employeeObject.getEmployeeList();
-		System.out.println(emp);
+		employeeObject.setEmployeeList("dvitiya");
+		employeeObject.setEmployeeList("tritiya");
+		Object employeeList1 = employeeObject.getEmployeeList();
+		System.out.println(employeeList1);
 		
 		
 		//SECOND OBJECT CREATED FOR CLONING
-		Object emp2 = employeeObject.clone();
-		System.out.println(emp2);
-		System.out.println(emp.hashCode());
-		System.out.println(emp2.hashCode());
+		Employee employeeList2 = employeeObject.clone();
+		System.out.println(employeeList2.getEmployeeList());
+		
+		
+		//DIFFERENT HASH CODE SHOWN
+		System.out.println(employeeList1.hashCode());
+		System.out.println(employeeList2.hashCode());
 	}
 }
 
