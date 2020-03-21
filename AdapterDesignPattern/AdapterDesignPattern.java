@@ -1,53 +1,44 @@
 package AdapterDesignPattern;
 
 
-class Volt 
+//CLASS VOLT
+class Socket
 {
-	private int volts;
+	int volt;
 
-	public Volt(int v)
+	public int getVolt() 
 	{
-		this.volts=v;
+		return volt;
 	}
 
-	public int getVolts()
+	public Socket(int volt) 
 	{
-		return volts;
-	}
-
-	public void setVolts(int volts)
-	{
-		this.volts = volts;
+		this.volt = volt;
 	}	
 }
 
 
-class Socket
+//SOCKET ADAPTER INTERFACE
+interface SocketAdapter
 {
-
-	public Volt getVolt()
-	{
-		return new Volt(120);
-	}
+	//ABSTRACT METHODS
+	public int get120Volt();
+	public int get12Volt();
+	public int get3Volt();
 }
 
 
-
-interface SocketAdapter {
-
-	public Volt get120Volt();
-
-	public Volt get12Volt();
-
-	public Volt get3Volt();
+//INTERFACE SOCKET VOLT ADAPTER
+interface SocketVoltAdapter
+{
+	
 }
 
-
-public class AdapterDesignPattern 
+//CLASS SOCKET ADAPTER IMPLEMENTATION
+class socketAdapterImplementation extends Socket 
 {
-
-	public static void main(String args[]) 
+	public socketAdapterImplementation()
 	{
-		
+		// TODO Auto-generated constructor stub
 	}
 }
