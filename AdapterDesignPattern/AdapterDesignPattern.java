@@ -2,43 +2,137 @@ package AdapterDesignPattern;
 
 
 //CLASS VOLT
-class Socket
+class Volt 
 {
-	int volt;
+	//INSTANCE VARIABLE
+	private int volts;
 
-	public int getVolt() 
+	//PARAMETERISED CONSTRUCTOR
+	public Volt(int voltValue)
 	{
-		return volt;
+		this.volts = voltValue;
 	}
 
-	public Socket(int volt) 
+	//GETTER METHOD
+	public int getVolts() 
 	{
-		this.volt = volt;
+		return volts;
+	}
+
+	//SETTER METHOD
+	public void setVolts(int volts)
+	{
+		this.volts = volts;
 	}	
 }
 
 
-//SOCKET ADAPTER INTERFACE
+//CLASS SOCKET
+class Socket 
+{
+	//CONSTANT 
+	int VOLT_VALUE = 120;
+
+	//OBJECT OF VOLT CLASS
+	Volt voltObject = new Volt(VOLT_VALUE);
+
+	//GETTER METHOD
+	public Volt getVolt()
+	{
+		return voltObject;
+	}
+}
+
+
+//INTERFACE SOCKET ADAPTER
 interface SocketAdapter
 {
-	//ABSTRACT METHODS
-	public int get120Volt();
-	public int get12Volt();
-	public int get3Volt();
+	public Volt get120Volt();		
+	public Volt get12Volt();	
+	public Volt get3Volt();
 }
 
-
-//INTERFACE SOCKET VOLT ADAPTER
-interface SocketVoltAdapter
-{
-	
-}
 
 //CLASS SOCKET ADAPTER IMPLEMENTATION
-class socketAdapterImplementation extends Socket 
+class SocketClassAdapterImplementation extends Socket implements SocketAdapter
 {
-	public socketAdapterImplementation()
+	@Override
+	public Volt get120Volt() 
 	{
-		// TODO Auto-generated constructor stub
+		return getVolt();
+	}
+
+	@Override
+	public Volt get12Volt() 
+	{
+		Volt voltObject = getVolt();
+		return convertVolt(voltObject, 10);
+	}
+
+	@Override
+	public Volt get3Volt() 
+	{
+		Volt voltObject = getVolt();
+		return convertVolt(voltObject, 40);
+	}
+
+	private Volt convertVolt(Volt voltObject, int divideValueAccordigToVolt) 
+	{
+		return new Volt(voltObject.getVolts()/divideValueAccordigToVolt);
+	}
+}
+
+
+//CLASS SOCKET ADAPTER IMPLEMENTATION WITH OBJECT
+class SocketObjectAdapterImplementation implements SocketAdapter
+{
+	//OBJECT OF SOCKET
+	private Socket sock = new Socket();
+
+	@Override
+	public Volt get120Volt()
+	{
+		return sock.getVolt();
+	}
+
+	@Override
+	public Volt get12Volt() 
+	{
+		Volt voltObject = sock.getVolt();
+		return convertVolt(voltObject, 10);
+	}
+
+	@Override
+	public Volt get3Volt()
+	{
+		Volt voltObject = sock.getVolt();
+		return convertVolt(voltObject, 40);
+	}
+
+	private Volt convertVolt(Volt voltObject, int divideValueAccordigToVolt) 
+	{
+		return new Volt(voltObject.getVolts()/divideValueAccordigToVolt);
+	}
+}
+
+
+//CLASS ADAPTER DESIGN PATTERN
+public class AdapterDesignPattern 
+{
+	//MAIN METHOD
+	public static void main(String[] args) 
+	{
+		//USING CLASS ADAPTER IMPLEMENTATION
+		SocketClassAdapterImplementation socketClassAdapterImplementationObject = new SocketClassAdapterImplementation();
+		System.out.println(socketClassAdapterImplementationObject.get120Volt().getVolts());
+		System.out.println(socketClassAdapterImplementationObject.get12Volt().getVolts());
+		System.out.println(socketClassAdapterImplementationObject.get3Volt().getVolts());
+		System.out.println();
+
+		//USING CLASS ADAPTER IMPLEMENTATION
+		SocketObjectAdapterImplementation socketObjectAdapterImplementationObject =  new SocketObjectAdapterImplementation();
+		System.out.println(socketObjectAdapterImplementationObject.get120Volt().getVolts());
+		System.out.println(socketObjectAdapterImplementationObject.get12Volt().getVolts());
+		System.out.println(socketObjectAdapterImplementationObject.get3Volt().getVolts());
 	}
 }
