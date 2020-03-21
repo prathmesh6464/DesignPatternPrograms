@@ -4,7 +4,7 @@ package AdapterDesignPattern;
 class Volt 
 {
 	private int volts;
-	
+
 	public Volt(int v)
 	{
 		this.volts=v;
@@ -32,11 +32,22 @@ class Socket
 }
 
 
+
+interface SocketAdapter {
+
+	public Volt get120Volt();
+
+	public Volt get12Volt();
+
+	public Volt get3Volt();
+}
+
+
 public class AdapterDesignPattern 
 {
-	
+
 	public static void main(String args[]) 
 	{
-		  
+		
 	}
 }
