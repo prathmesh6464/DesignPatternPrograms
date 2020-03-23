@@ -44,13 +44,12 @@ class CommandExecutorProxy implements CommandExecutor
 		else
 		{
 			if(cmd.trim().startsWith("rm"))
-			{
 				throw new Exception("rm command is not allowed for non-admin users.");
-			}
+
+			if(cmd.trim().endsWith("-a"))
+				throw new Exception("ls -a command shows hidden files this is not allowed for non-admin users.");
 			else
-			{
 				executor.runCommand(cmd);
-			}
 		}
 	}
 }
@@ -64,6 +63,7 @@ class ProxyDesignPattern
 		CommandExecutor executor = new CommandExecutorProxy("Prathamesh", "adminSSS");
 		try 
 		{
+			executor.runCommand("ls");
 			executor.runCommand("ls -a");
 			executor.runCommand("   rm abc.pdf");
 		}
