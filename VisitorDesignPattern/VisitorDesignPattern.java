@@ -11,20 +11,26 @@ interface ItemElement
 //CLASS BOOK
 class Book implements ItemElement
 {
+	//VARIABLES OF BOOK
 	private int price;
 	private String bookName;
-
+	
+	//CONSTRUCTOR
 	public Book(int cost, String isBookNameNumber)
 	{
 		this.price = cost;
 		this.bookName = isBookNameNumber;
 	}
 
-	public int getPrice() {
+	//GETTER
+	public int getPrice()
+	{
 		return price;
 	}
 
-	public String getIsBookNameNumber() {
+	//SETTER
+	public String getIsBookNameNumber() 
+	{
 		return bookName;
 	}
 
@@ -39,10 +45,12 @@ class Book implements ItemElement
 //CLASS FRUIT
 class Fruit implements ItemElement
 {
+	//VARIABLES
 	private int pricePerKG;
 	private int weight;
 	private String name;
 
+	//CONSTRUCTOR
 	public Fruit(int pricePerKG, int weight, String name)
 	{
 		this.pricePerKG = pricePerKG;
@@ -50,17 +58,19 @@ class Fruit implements ItemElement
 		this.name = name;
 	}
 
+	//GETTER
 	public int getPricePerKG() 
 	{
 		return pricePerKG;
 	}
 
-
+	//GETTER
 	public int getWeight()
 	{
 		return weight;
 	}
-
+	
+	//GETTER
 	public String getName()
 	{
 		return this.name;
