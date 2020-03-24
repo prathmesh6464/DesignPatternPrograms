@@ -17,11 +17,22 @@ class User
 {
 	String userName;
 	
-	String getName()
+	//GETTER
+	public String getName()
 	{
 		return userName;		
 	}
 	
+	//SETTER
+	public void setName(String name)
+	{
+		this.userName = name;
+	}
+	
+	public void sendMessage(String message)
+	{
+		ChatRoom.showMessage(this, message);
+	}	
 }
 
 
