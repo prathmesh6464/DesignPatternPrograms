@@ -7,8 +7,21 @@ class ChatRoom
 {
 	public static void showMessage(User userName, String message)
 	{
-		System.out.println(new Date().toString()+" Message Sent by : "+userName+"\n"+"\t"+message+"\n");
+		System.out.println(new Date().toString()+" message Sent by : "+userName.getName()+"\n"+"\t"+message+"\n");
 	}
+}
+
+
+//CLASS USER
+class User
+{
+	String userName;
+	
+	String getName()
+	{
+		return userName;		
+	}
+	
 }
 
 
