@@ -1,9 +1,24 @@
 package MediatorDesignPattern;
+import java.util.Date;
 
-public class MediatorDesignPattern {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+//CLASS CHAT ROOM
+class ChatRoom
+{
+	public static void showMessage(User userName, String message)
+	{
+		System.out.println(new Date().toString()+" Message Sent by : "+userName+"\n"+"\t"+message+"\n");
+	}
+}
+
+
+//CLASS MEDIATORDESIGNPATTERN
+public class MediatorDesignPattern 
+{
+	//MAIN METHOD
+	public static void main(String[] args) 
+	{
+		
 
 	}
 
