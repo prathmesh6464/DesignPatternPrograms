@@ -1,5 +1,7 @@
 package ObserverDesignPattern;
 
+import java.util.ArrayList;
+import java.util.List;
 
 //OBSERVER INTERFACE
 interface Observer
@@ -15,17 +17,44 @@ interface Subject
 	void register(Observer observerOnTopic);
 	void unregister(Observer observerUnRegister);
 	void notifyObservers();
-	Object getUpdate();
+	//Object getUpdate();
 }
 
 
 //CLASS MY TOPIC
-class MyTopic implements Observer,Subject 
+class MyTopic implements Subject 
 {
-	String message;
-	boolean changed;
-	Object MUTEX; 
+	private List<Observer> observers;
+	private String message;
+	private boolean changed;
+	private final Object MUTEX = new Object();
 
+	//CONSTRUCTOR
+	public MyTopic()
+	{
+		this.observers = new ArrayList<>();
+	}
+	
+	@Override
+	public void register(Observer observerAdded)
+	{
+		observers.add(observerAdded);
+	}
+
+	@Override
+	public void unregister(Observer observerRemove) 
+	{
+		observers.remove(observerRemove);
+	}
+
+	@Override
+	public void notifyObservers() 
+	{
+		for (Observer obj : observers)
+		{
+			obj.update();
+		}
+	}
 }
 
 
@@ -38,5 +67,4 @@ public class ObserverDesignPattern
 		// TODO Auto-generated method stub
 
 	}
-
 }
