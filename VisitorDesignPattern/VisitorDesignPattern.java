@@ -4,20 +4,35 @@ package VisitorDesignPattern;
 //INTERFACE ITEM ELEMENT
 interface ItemElement
 {
-	int acccept(ShopingCartVisitor shopingCartVisitorObject);
+	int accept(ShopingCartVisitor shopingCartVisitorObject);
 }
 
 
 //CLASS BOOK
 class Book implements ItemElement
 {
-
-	@Override
-	public int acccept(ShopingCartVisitor shopingCartVisitorObject) {
-		// TODO Auto-generated method stub
-		return 0;
+	private int price;
+	private String isbnNumber;
+	
+	public Book(int cost, String isbn)
+	{
+		this.price = cost;
+		this.isbnNumber = isbn;
 	}
 	
+	public int getPrice() {
+		return price;
+	}
+
+	public String getIsbnNumber() {
+		return isbnNumber;
+	}
+
+	@Override
+	public int accept(ShopingCartVisitor shopingCartVisitorObject) 
+	{
+		return shopingCartVisitorObject.visit(this);
+	}
 }
 
 
@@ -26,11 +41,10 @@ class Fruit implements ItemElement
 {
 
 	@Override
-	public int acccept(ShopingCartVisitor shopingCartVisitorObject) {
+	public int accept(ShopingCartVisitor shopingCartVisitorObject) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	
+	} 	
 }
 
 
