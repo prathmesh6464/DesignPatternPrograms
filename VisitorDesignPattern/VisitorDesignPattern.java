@@ -14,7 +14,7 @@ class Book implements ItemElement
 	//VARIABLES OF BOOK
 	private int price;
 	private String bookName;
-	
+
 	//CONSTRUCTOR
 	public Book(int cost, String isBookNameNumber)
 	{
@@ -69,7 +69,7 @@ class Fruit implements ItemElement
 	{
 		return weight;
 	}
-	
+
 	//GETTER
 	public String getName()
 	{
@@ -101,7 +101,7 @@ class ShoppingCartVisitorImplement implements ShopingCartVisitor
 		int cost = 0;
 
 		cost = book.getPrice();
-		System.out.println("Book Name: "+book.getIsBookNameNumber() + "  cost = "+cost);
+		System.out.println("Book name : "+book.getIsBookNameNumber() + " and cost = "+cost);
 		return cost;
 	}
 
@@ -129,7 +129,7 @@ public class VisitorDesignPattern
 		}
 		return sum;
 	}
-	
+
 	//MAIN METHOD
 	public static void main(String[] args) 
 	{
