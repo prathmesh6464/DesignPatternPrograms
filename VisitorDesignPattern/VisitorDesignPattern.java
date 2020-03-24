@@ -2,16 +2,19 @@ package VisitorDesignPattern;
 
 
 //INTERFACE ITEM ELEMENT
-interface itemElement
+interface ItemElement
 {
-	int acccept(shopingCartVisitor shopingCartVisitorObject);
+	int acccept(ShopingCartVisitor shopingCartVisitorObject);
 }
 
 
 //INTERFACE SHOPPING CART VISITOR
-
-
-
+interface ShopingCartVisitor
+{
+	int visit(Book bookObject);
+	int visit(Fruit fruitObject);
+}
+ 
 
 //CLASS VISITOR DESIGN PATTERN
 public class VisitorDesignPattern {
