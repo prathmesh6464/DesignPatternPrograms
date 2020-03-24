@@ -23,5 +23,4 @@ public class VisitorDesignPattern {
 		// TODO Auto-generated method stub
 
 	}
-
 }
