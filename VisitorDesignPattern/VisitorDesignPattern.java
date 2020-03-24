@@ -29,7 +29,7 @@ class Book implements ItemElement
 	}
 
 	//GETTER
-	public String getIsBookNameNumber() 
+	public String getBookName() 
 	{
 		return bookName;
 	}
@@ -101,7 +101,7 @@ class ShoppingCartVisitorImplement implements ShopingCartVisitor
 		int cost = 0;
 
 		cost = book.getPrice();
-		System.out.println("Book name : "+book.getIsBookNameNumber() + " and cost = "+cost);
+		System.out.println("Book name : "+book.getBookName() + " and cost = "+cost);
 		return cost;
 	}
 
