@@ -19,7 +19,7 @@ class Book implements ItemElement
 	public Book(int cost, String bookName)
 	{
 		this.price = cost;
-		this.bookName = isBookNameNumber;
+		this.bookName = bookName;
 	}
 
 	//GETTER
