@@ -28,7 +28,7 @@ class Book implements ItemElement
 		return price;
 	}
 
-	//SETTER
+	//GETTER
 	public String getIsBookNameNumber() 
 	{
 		return bookName;
