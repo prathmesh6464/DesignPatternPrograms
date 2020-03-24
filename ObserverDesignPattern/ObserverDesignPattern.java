@@ -17,7 +17,7 @@ interface Subject
 	void register(Observer observerOnTopic);
 	void unregister(Observer observerUnRegister);
 	void notifyObservers();
-	//Object getUpdate();
+	Object getUpdate();
 }
 
 
@@ -54,6 +54,21 @@ class MyTopic implements Subject
 		{
 			obj.update();
 		}
+	}
+	
+	@Override
+	public Object getUpdate()
+	{
+		return this.message;
+	}
+	
+	//METHOD POST MESSAGE TO POST THE MESSAGE
+	public void postMessage(String message)
+	{
+		System.out.println("Message Posted to Topic : "+message);
+		this.message = message;
+		this.changed = true;
+		notifyObservers();
 	}
 }
 
