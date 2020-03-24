@@ -61,7 +61,7 @@ class MyTopic implements Subject
 	}
 
 	//METHOD POST MESSAGE TO POST THE MESSAGE
-	public void postMessage(String message)
+	public void addTopic(String message)
 	{
 		System.out.println("Message posted to topic : "+message);
 		this.message = message;
@@ -132,13 +132,6 @@ public class ObserverDesignPattern
 		topic.unregister(objectScriber4);
 
 		//SEND MESSAGE TO SUBJECT
-		topic.postMessage("New topic added - how to prevent corona virus");
-		
-		//UPDATE OF NEW TOPIC
-		objectScriber1.update();
-		objectScriber2.update();
-		objectScriber3.update();
-		objectScriber4.update();
-		objectScriber5.update();
+		topic.addTopic("New topic added - how to prevent corona virus");
 	}
 }
