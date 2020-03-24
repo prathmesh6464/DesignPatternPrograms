@@ -1,13 +1,13 @@
 package ObserverDesignPattern;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 //OBSERVER INTERFACE
 interface Observer
 {
 	void update();
-	void setSubject();
+	void setSubject(Subject subject);
 }
 
 
@@ -18,6 +18,7 @@ interface Subject
 	void unregister(Observer observerUnRegister);
 	void notifyObservers();
 	Object getUpdate();
+
 }
 
 
@@ -26,15 +27,13 @@ class MyTopic implements Subject
 {
 	private List<Observer> observers;
 	private String message;
-	private boolean changed;
-	private final Object MUTEX = new Object();
 
 	//CONSTRUCTOR
 	public MyTopic()
 	{
 		this.observers = new ArrayList<>();
 	}
-	
+
 	@Override
 	public void register(Observer observerAdded)
 	{
@@ -55,20 +54,46 @@ class MyTopic implements Subject
 			obj.update();
 		}
 	}
-	
+
 	@Override
-	public Object getUpdate()
+	public String getUpdate()
 	{
 		return this.message;
 	}
-	
+
 	//METHOD POST MESSAGE TO POST THE MESSAGE
 	public void postMessage(String message)
 	{
 		System.out.println("Message Posted to Topic : "+message);
 		this.message = message;
-		this.changed = true;
 		notifyObservers();
+	}
+}
+
+
+//CLASS MY TOPIC SUBSCRIBER
+class MyTopicSubscriber implements Observer 
+{
+	private String subscriberName;
+	private Subject topic = new MyTopic();
+
+	//CONSTRUCTOR
+	public MyTopicSubscriber(String subscriberName)
+	{
+		this.subscriberName = subscriberName;
+	}
+
+	@Override
+	public void update() 
+	{
+		String message = (String) topic.getUpdate();
+		System.out.println(subscriberName+" please check "+message);
+	}
+
+	@Override
+	public void setSubject(Subject subject) 
+	{
+		this.topic = subject;		
 	}
 }
 
@@ -79,7 +104,35 @@ public class ObserverDesignPattern
 	//MAIN METHOD
 	public static void main(String[] args) 
 	{
-		// TODO Auto-generated method stub
+		//CREATE SUBJECT
+		MyTopic topic = new MyTopic();
 
+		//OBJECT OF MY TOPIC SUBSCRIBER
+		Observer objectScriber1 = new MyTopicSubscriber("prathamesh");
+		Observer objectScriber2 = new MyTopicSubscriber("pratham");
+		Observer objectScriber3 = new MyTopicSubscriber("prajwal");
+		Observer objectScriber4 = new MyTopicSubscriber("praful");
+		Observer objectScriber5 = new MyTopicSubscriber("pratik");
+
+		//REGISTER OBSERVERS TO THE SUBJECT
+		topic.register(objectScriber1);
+		topic.register(objectScriber2);
+		topic.register(objectScriber3);
+		topic.register(objectScriber3);
+		topic.register(objectScriber3);
+
+		//ATTACH OBSERVER TO SUBJECT
+		objectScriber1.setSubject(topic);
+		objectScriber2.setSubject(topic);
+		objectScriber3.setSubject(topic);
+		objectScriber4.setSubject(topic);
+		objectScriber5.setSubject(topic);
+		
+		//REMOVE OBSERVER TO SUBJECT
+		topic.unregister(objectScriber3);
+		topic.unregister(objectScriber4);
+
+		//SEND MESSAGE TO SUBJECT
+		topic.postMessage("New topic added - how to prevent corona virus");
 	}
 }
