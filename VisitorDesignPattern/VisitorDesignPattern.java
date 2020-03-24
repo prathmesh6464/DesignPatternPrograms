@@ -50,7 +50,7 @@ class Fruit implements ItemElement
 		this.name = name;
 	}
 
-	public int getPricePerKg() 
+	public int getPricePerKG() 
 	{
 		return pricePerKG;
 	}
@@ -74,9 +74,6 @@ class Fruit implements ItemElement
 }
 
 
-
-
-
 //INTERFACE SHOPPING CART VISITOR
 interface ShopingCartVisitor
 {
@@ -84,6 +81,29 @@ interface ShopingCartVisitor
 	int visit(Fruit fruitObject);
 }
 
+
+//CLASS SHOPING CART VISITOR IMPLEMENT
+class ShoppingCartVisitorImplement implements ShopingCartVisitor
+{
+	@Override
+	public int visit(Book book) 
+	{
+		int cost = 0;
+		
+		cost = book.getPrice();
+		System.out.println("Book ISBN::"+book.getIsBookNameNumber() + " cost ="+cost);
+		return cost;
+	}
+
+	@Override
+	public int visit(Fruit fruit) 
+	{
+		int cost = fruit.getPricePerKG()*fruit.getWeight();
+		System.out.println(fruit.getName() + " cost = "+cost);
+		return cost;
+	}
+
+}
 
 
 //CLASS VISITOR DESIGN PATTERN
