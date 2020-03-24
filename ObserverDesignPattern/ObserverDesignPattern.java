@@ -18,7 +18,6 @@ interface Subject
 	void unregister(Observer observerUnRegister);
 	void notifyObservers();
 	Object getUpdate();
-
 }
 
 
@@ -56,7 +55,7 @@ class MyTopic implements Subject
 	}
 
 	@Override
-	public String getUpdate()
+	public Object getUpdate()
 	{
 		return this.message;
 	}
@@ -64,7 +63,7 @@ class MyTopic implements Subject
 	//METHOD POST MESSAGE TO POST THE MESSAGE
 	public void postMessage(String message)
 	{
-		System.out.println("Message Posted to Topic : "+message);
+		System.out.println("Message posted to topic : "+message);
 		this.message = message;
 		notifyObservers();
 	}
@@ -75,7 +74,7 @@ class MyTopic implements Subject
 class MyTopicSubscriber implements Observer 
 {
 	private String subscriberName;
-	private Subject topic = new MyTopic();
+	private Subject topic;
 
 	//CONSTRUCTOR
 	public MyTopicSubscriber(String subscriberName)
@@ -127,12 +126,19 @@ public class ObserverDesignPattern
 		objectScriber3.setSubject(topic);
 		objectScriber4.setSubject(topic);
 		objectScriber5.setSubject(topic);
-		
+
 		//REMOVE OBSERVER TO SUBJECT
 		topic.unregister(objectScriber3);
 		topic.unregister(objectScriber4);
 
 		//SEND MESSAGE TO SUBJECT
 		topic.postMessage("New topic added - how to prevent corona virus");
+		
+		//UPDATE OF NEW TOPIC
+		objectScriber1.update();
+		objectScriber2.update();
+		objectScriber3.update();
+		objectScriber4.update();
+		objectScriber5.update();
 	}
 }
