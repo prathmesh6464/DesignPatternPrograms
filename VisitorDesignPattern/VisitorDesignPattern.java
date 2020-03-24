@@ -12,12 +12,12 @@ interface ItemElement
 class Book implements ItemElement
 {
 	private int price;
-	private String isBookNameNumber;
+	private String bookName;
 
 	public Book(int cost, String isBookNameNumber)
 	{
 		this.price = cost;
-		this.isBookNameNumber = isBookNameNumber;
+		this.bookName = isBookNameNumber;
 	}
 
 	public int getPrice() {
@@ -25,7 +25,7 @@ class Book implements ItemElement
 	}
 
 	public String getIsBookNameNumber() {
-		return isBookNameNumber;
+		return bookName;
 	}
 
 	@Override
@@ -89,9 +89,9 @@ class ShoppingCartVisitorImplement implements ShopingCartVisitor
 	public int visit(Book book) 
 	{
 		int cost = 0;
-		
+
 		cost = book.getPrice();
-		System.out.println("Book ISBN::"+book.getIsBookNameNumber() + " cost ="+cost);
+		System.out.println("Book Name: "+book.getIsBookNameNumber() + "  cost = "+cost);
 		return cost;
 	}
 
@@ -107,10 +107,25 @@ class ShoppingCartVisitorImplement implements ShopingCartVisitor
 
 
 //CLASS VISITOR DESIGN PATTERN
-public class VisitorDesignPattern {
+public class VisitorDesignPattern 
+{
+	private static int calculatePrice(ItemElement[] items)
+	{
+		ShopingCartVisitor visitor = new ShoppingCartVisitorImplement();
+		int sum = 0;
+		for(ItemElement item : items)
+		{
+			sum = sum + item.accept(visitor);
+		}
+		return sum;
+	}
+	
+	//MAIN METHOD
+	public static void main(String[] args) 
+	{
+		ItemElement[] items = new ItemElement[]{new Book(20, "Python"),new Book(100, "Java"),new Fruit(10, 2, "Banana"), new Fruit(5, 5, "Apple")};
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		int total = calculatePrice(items);
+		System.out.println("Total cost = "+total);
 	}
 }
