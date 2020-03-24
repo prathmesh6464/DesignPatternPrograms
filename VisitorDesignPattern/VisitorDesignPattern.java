@@ -8,6 +8,34 @@ interface ItemElement
 }
 
 
+//CLASS BOOK
+class Book implements ItemElement
+{
+
+	@Override
+	public int acccept(ShopingCartVisitor shopingCartVisitorObject) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}
+
+
+//CLASS FRUIT
+class Fruit implements ItemElement
+{
+
+	@Override
+	public int acccept(ShopingCartVisitor shopingCartVisitorObject) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}
+
+
+
+
 //INTERFACE SHOPPING CART VISITOR
 interface ShopingCartVisitor
 {
@@ -15,6 +43,7 @@ interface ShopingCartVisitor
 	int visit(Fruit fruitObject);
 }
  
+
 
 //CLASS VISITOR DESIGN PATTERN
 public class VisitorDesignPattern {
