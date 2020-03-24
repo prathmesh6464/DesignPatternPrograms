@@ -16,7 +16,7 @@ class Book implements ItemElement
 	private String bookName;
 
 	//CONSTRUCTOR
-	public Book(int cost, String isBookNameNumber)
+	public Book(int cost, String bookName)
 	{
 		this.price = cost;
 		this.bookName = isBookNameNumber;
