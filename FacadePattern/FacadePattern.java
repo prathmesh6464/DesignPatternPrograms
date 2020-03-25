@@ -39,9 +39,11 @@ class ConnectionDatabase implements MySqlHelper,OracleHelper
 		{
 			int studentRollNumber = resultSet.getInt(1);
 			String studentName = resultSet.getString(2);
-			System.out.println("Student name : "+studentName);
 			System.out.println("Student roll number : "+studentRollNumber);
-		}		
+			System.out.println("Student name : "+studentName);
+		}	
+		resultSet.close();
+		connectionWithMysql.close();
 	}
 
 	public void getOracleDbConnection() throws Exception
@@ -65,6 +67,7 @@ class ConnectionDatabase implements MySqlHelper,OracleHelper
 			System.out.println("Cutomer name : "+customerName);
 			System.out.println("Cutomer city : "+customerCity);				
 		}	
+		resultSet.close();
 		connectionWithOracle.close();
 	}
 }
