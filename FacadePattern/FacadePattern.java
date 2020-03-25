@@ -55,7 +55,7 @@ class ConnectionDatabase implements MySqlHelper,OracleHelper
 		Connection connectionWithOracle = DriverManager.getConnection(url, userName, password);
 		Statement statement = connectionWithOracle.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
-		
+
 		while(resultSet.next())
 		{
 			int customerID = resultSet.getInt("customer_id");
@@ -77,7 +77,7 @@ public class FacadePattern
 	public static void main(String[] args) throws Exception
 	{
 		ConnectionDatabase connectionDatabaseObject =  new ConnectionDatabase();
-		//connectionDatabaseObject.getMySqlDbConnection();
+		connectionDatabaseObject.getMySqlDbConnection();
 		connectionDatabaseObject.getOracleDbConnection();
 	}
 }
