@@ -32,15 +32,15 @@ class ConnectionDatabase implements MySqlHelper,OracleHelper
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection connectionWithMysql = DriverManager.getConnection(url, userName, password);
-		java.sql.Statement statement = connectionWithMysql.createStatement();
+		Statement statement = connectionWithMysql.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
 
 		while(resultSet.next())
 		{
 			int studentRollNumber = resultSet.getInt(1);
 			String studentName = resultSet.getString(2);
-			System.out.println(studentName);
-			System.out.println(studentRollNumber);
+			System.out.println("Student name : "+studentName);
+			System.out.println("Student roll number : "+studentRollNumber);
 		}		
 	}
 
