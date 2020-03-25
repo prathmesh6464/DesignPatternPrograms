@@ -36,7 +36,7 @@ class User
 }
 
 
-//CLASS MEDIATORDESIGNPATTERN ACTS AS A MEDIATER
+//CLASS MEDIATOR DESIGN PATTERN
 public class MediatorDesignPattern 
 {
 	//MAIN METHOD
