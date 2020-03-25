@@ -2,6 +2,7 @@ package FacadePattern;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 
 //INTERFACE MY SQL HELPER
@@ -28,12 +29,12 @@ class ConnectionDatabase implements MySqlHelper,OracleHelper
 		String userName = "root";
 		String password = "";
 		String query = "select * from Student";
-		
+
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection connectionWithMysql = DriverManager.getConnection(url, userName, password);
 		java.sql.Statement statement = connectionWithMysql.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
-		
+
 		while(resultSet.next())
 		{
 			int studentRollNumber = resultSet.getInt(1);
@@ -42,26 +43,29 @@ class ConnectionDatabase implements MySqlHelper,OracleHelper
 			System.out.println(studentRollNumber);
 		}		
 	}
-	
+
 	public void getOracleDbConnection() throws Exception
 	{
-		String url = "jdbc:oracle:thin://localhost:1521//FacadePatternDataBase";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String userName = "system";
 		String password = "admin";
-		String query = "select * from Student";
-		
+		String query = "select * from customers";
+
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connectionWithOracle = DriverManager.getConnection(url, userName, password);
-		java.sql.Statement statement = connectionWithOracle.createStatement();
+		Statement statement = connectionWithOracle.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
 		
 		while(resultSet.next())
 		{
-			int studentRollNumber = resultSet.getInt(1);
-			String studentName = resultSet.getString(2);
-			System.out.println(studentName);
-			System.out.println(studentRollNumber);
-		}		
+			int customerID = resultSet.getInt("customer_id");
+			String customerName = resultSet.getString("customer_name");
+			String customerCity = resultSet.getString("city");
+			System.out.println(customerID);
+			System.out.println(customerName);
+			System.out.println(customerCity);				
+		}	
+		connectionWithOracle.close();
 	}
 }
 
@@ -73,7 +77,7 @@ public class FacadePattern
 	public static void main(String[] args) throws Exception
 	{
 		ConnectionDatabase connectionDatabaseObject =  new ConnectionDatabase();
-		connectionDatabaseObject.getMySqlDbConnection();
+		//connectionDatabaseObject.getMySqlDbConnection();
 		connectionDatabaseObject.getOracleDbConnection();
 	}
 }
