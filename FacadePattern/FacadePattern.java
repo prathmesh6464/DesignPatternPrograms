@@ -61,9 +61,9 @@ class ConnectionDatabase implements MySqlHelper,OracleHelper
 			int customerID = resultSet.getInt("customer_id");
 			String customerName = resultSet.getString("customer_name");
 			String customerCity = resultSet.getString("city");
-			System.out.println(customerID);
-			System.out.println(customerName);
-			System.out.println(customerCity);				
+			System.out.println("Cutomer id : "+customerID);
+			System.out.println("Cutomer name : "+customerName);
+			System.out.println("Cutomer city : "+customerCity);				
 		}	
 		connectionWithOracle.close();
 	}
