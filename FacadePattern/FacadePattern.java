@@ -13,7 +13,6 @@ interface MySqlHelper
 
 
 //INTERFACE ORACLE HELPER
-
 interface OracleHelper
 {
     void getOracleDbConnection() throws Exception;
